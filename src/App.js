@@ -1,25 +1,24 @@
 import logo from './logo.svg';
 import './App.css';
-
+import Notas from './Componentes/Notas';
+import Footer from './Componentes/Footer';
+import {db} from './firebase';
 function App() {
+ var soyelfooter="EL FOOTER";
+ const enviarDatos=async (datos)=>{
+    await db.collection('usuarios').doc().set(datos); 
+ };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+    
+    <Notas enviarDatos={enviarDatos}/>
+    <Footer soy={soyelfooter}/>
+    </>
+
+    
+
   );
 }
+
 
 export default App;
